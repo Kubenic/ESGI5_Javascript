@@ -1,10 +1,10 @@
 # ESGI5_Javascript
 
-## Objectif
+### Objectif
 
 Création d'un site avec une liste non exhaustive de films et série classé par genre. Au clic sur un film ou séries, une fiche détaillé s'affichera.
 
-## Taches
+### Taches
 * Routing
     * Récupération de l'url
     * Traitement de l'url
