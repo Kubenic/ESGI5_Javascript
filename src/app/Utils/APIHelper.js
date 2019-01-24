@@ -38,7 +38,7 @@ export default class APIHelper{
         return APIHelper.call("/discover/movie", {page: page});
     }
 
-    static search(page){
+    static search(query){
         return APIHelper.call("/search/movie", {query: query});
     }
 

@@ -1,17 +1,20 @@
-var markup = ``;
+import * as CardPartHTMLMarkup from './Parts/Card.js';
+
 
 export function generate(body,footer,cards){
+    let markup = ``;
     markup +=`${body}`;
     markup +=`<div class="wrap">
                     <div class="search">
-                    <input type="text" class="searchTerm" placeholder="Quel film cherchez-vous?">
-                        <button type="submit" class="searchButton">
-                            Rechercher
-                        </button>
+                      <input type="search" class="search-box" id="search-box" />
+                      <span class="search-button" id="search-button">
+                        <span class="search-icon"></span>
+                      </span>
                     </div>
                 </div>`;
     markup +=`<div id="movie-card-list">`;
-    for(let card in cards){
+    markup += CardPartHTMLMarkup.generate(cards);
+    /*for(let card in cards){
         markup += `
         <div class="movie-card" style="background-image: url(https://image.tmdb.org/t/p/w500${cards[card].backdrop_path})">
             <div class="movie-card__overlay"></div>
@@ -29,8 +32,9 @@ export function generate(body,footer,cards){
         <a class="btn btn-outline movie-card__button" type="button" href="/movie/${cards[card].id}">Voir les détails</a>
         </div>
         </div>`;
-    }
+    }*/
     markup += `</div>`;
+
     markup +=`${footer}`;
     return markup;
 }
