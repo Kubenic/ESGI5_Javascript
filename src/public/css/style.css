@@ -30,12 +30,12 @@ a {
     text-decoration: none;
 }
 
-a {
+a, button {
     font-family: inherit;
     border: 0;
     cursor: pointer;
 }
-a:focus {
+a:focus, button:focus {
     outline: 0;
 }
 
@@ -144,6 +144,10 @@ a:focus {
     color: #ffffff;
     margin-bottom: .25em;
     opacity: .75;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 .movie-card__info {
     text-transform: uppercase;
