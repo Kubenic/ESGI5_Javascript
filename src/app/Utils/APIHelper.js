@@ -42,4 +42,7 @@ export default class APIHelper{
         return APIHelper.call("/search/movie", {query: query});
     }
 
+    static details(id) {
+        return APIHelper.call(`/movie/${id}`, []);
+    }
 }

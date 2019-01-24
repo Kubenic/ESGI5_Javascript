@@ -26,7 +26,7 @@ export function generate(body,footer,cards){
         <h4 class="movie-card__info">${cards[card].release_date}</h4>
         </div>
         <p class="movie-card__desc">${cards[card].overview}</p>
-        <a class="btn btn-outline movie-card__button" type="button" href="">Voir les détails</a>
+        <a class="btn btn-outline movie-card__button" type="button" href="/movie/${cards[card].id}">Voir les détails</a>
         </div>
         </div>`;
     }
