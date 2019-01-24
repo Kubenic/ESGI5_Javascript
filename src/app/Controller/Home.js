@@ -14,6 +14,6 @@ export default class Home{
                 //console.log(HTMLMarkup);
                 document.body.innerHTML = HTMLMarkup.generate('<h2>Header</h2>','<h2>Footer</h2>',value.results);
             })
-    }
+        }
 
 }

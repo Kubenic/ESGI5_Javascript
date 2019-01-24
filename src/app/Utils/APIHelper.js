@@ -22,4 +22,9 @@ export default class APIHelper{
     static discover(page){
         return APIHelper.call("/discover/movie", {page: page});
     }
+
+    static search(page){
+        return APIHelper.call("/search/movie", {query: query});
+    }
+
 }

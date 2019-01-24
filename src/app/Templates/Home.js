@@ -2,6 +2,14 @@ var markup = ``;
 
 export function generate(body,footer,cards){
     markup +=`${body}`;
+    markup +=`<div class="wrap">
+                    <div class="search">
+                    <input type="text" class="searchTerm" placeholder="Quel film cherchez-vous?">
+                        <button type="submit" class="searchButton">
+                            Rechercher
+                        </button>
+                    </div>
+                </div>`;
     markup +=`<div id="movie-card-list">`;
     for(let card in cards){
         markup += `
