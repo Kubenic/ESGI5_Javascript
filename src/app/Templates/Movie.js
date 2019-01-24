@@ -1,9 +1,11 @@
-var markup = ``;
+
 
 export function generate(body,footer,details){
+    let markup = ``;
     markup +=`${body}`;
-    markup +=`<div id="movie-card-list">`;
 
+    markup +=`<div id="movie-card-list">`;
+    markup +=`<a id="back-to-home" href="/"> <i class="material-icons">keyboard_arrow_left</i> <span>Revenir à l'accueil</span></a>`;
     markup += `
     <style>.hero:before {
         content: '';
@@ -14,7 +16,7 @@ export function generate(body,footer,details){
         top: 0;
         left: 0;
         z-index: -1;
-        background: url(https://image.tmdb.org/t/p/w780${details.backdrop_path});
+        background: url(https://image.tmdb.org/t/p/w780${details.backdrop_path}) #000000;
         -webkit-transform: skewY(-2.2deg);
                 transform: skewY(-2.2deg);
         -webkit-transform-origin: 0 0;
@@ -24,7 +26,6 @@ export function generate(body,footer,details){
     <div class="movie-details">
   
   <div class="container">
-    
     <a href="#"><img src="https://image.tmdb.org/t/p/w500${details.poster_path}" alt="cover" class="cover" /></a>
         
     <div class="hero">
@@ -57,7 +58,7 @@ export function generate(body,footer,details){
       
       <div class="column2">
         
-        <p>${details.overview}</p>
+        <p>${(details.overview !== "") ? details.overview : "Pas de description"}</p>
         <a href="#"> Voir plus</a>
       </div>
     </div> 
