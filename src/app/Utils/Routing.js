@@ -10,6 +10,7 @@ export default class Routing {
         for(let route in this.routes){
             let rxps = this.prepareRxpString(route);
             let rxp = new RegExp("^"+rxps.pattern+"$");
+            
             if(rxp.test(window.location.pathname)){
                 /**
                  * NEED MODIFICATION

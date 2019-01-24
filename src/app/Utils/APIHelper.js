@@ -22,4 +22,8 @@ export default class APIHelper{
     static discover(page){
         return APIHelper.call("/discover/movie", {page: page});
     }
+
+    static details(id) {
+        return APIHelper.call(`/movie/${id}`, []);
+    }
 }
