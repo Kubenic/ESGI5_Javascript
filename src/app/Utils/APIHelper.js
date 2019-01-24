@@ -6,12 +6,27 @@ export default class APIHelper{
         let queryString = "";
         queryString += Object.keys(parts).map(key => key + '=' + parts[key]).join('&');
         options += (queryString !== "") ? "&"+queryString : "";
-        let url = baseUrl+urlPart+options
+        let url = baseUrl+urlPart+options;
         return new Promise((resolve, reject) => {
+
+            if(sessionStorage.getItem(url)){
+                let item = JSON.parse(sessionStorage.getItem(url));
+                if(Date.now() > item.expires){
+                    sessionStorage.removeItem(url);
+                }else{
+                    resolve(item.data);
+                    return;
+                }
+            }
+
             fetch(url)
                 .then((response) => {
                     response.json()
                         .then((value) => {
+                            sessionStorage.setItem(url,JSON.stringify({
+                                expires : Date.now() + (3600*1000),
+                                data : value
+                            }));
                             resolve(value);
                         })
                 })
