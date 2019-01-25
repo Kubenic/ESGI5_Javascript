@@ -9,21 +9,24 @@ export default class Home extends BaseController{
     }
     view(){
         APIHelper.discover(1)
-            .then((value) => {
-                //console.log(HTMLMarkup.generate('','',value.results));
-                this.importTemplate(HTMLMarkup.generate('','',value.results));
+            .then((discorverValue) => {
+                APIHelper.genreList().then((genreList) => {
 
-                /*this.importScript(`
-                    var searchButton = document.getElementById('search-button'),
-                    searchBox = document.getElementById('search-box');
-                    
-                    searchButton.onclick = function(e){
-                        let target = e.target || e.srcElement;
-                        target.parentElement.classList.toggle('open');
-                    };
-                `,'inline');*/
+                    //console.log(HTMLMarkup.generate('','',discorverValue.results));
+                    this.importTemplate(HTMLMarkup.generate('','',discorverValue.results,genreList.genres));
 
-                this.importScript('/public/js/search.js','src',true);
+                    /*this.importScript(`
+                        var searchButton = document.getElementById('search-button'),
+                        searchBox = document.getElementById('search-box');
+
+                        searchButton.onclick = function(e){
+                            let target = e.target || e.srcElement;
+                            target.parentElement.classList.toggle('open');
+                        };
+                    `,'inline');*/
+
+                    this.importScript('/public/js/search.js','src',true);
+                });
             })
         }
 

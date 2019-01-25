@@ -1,6 +1,6 @@
 
 
-export function generate(body,footer,details){
+export function generate(body,footer,details,video){
     let markup = ``;
     markup +=`${body}`;
 
@@ -26,7 +26,7 @@ export function generate(body,footer,details){
     <div class="movie-details">
   
   <div class="container">
-    <a href="#"><img src="https://image.tmdb.org/t/p/w500${details.poster_path}" alt="cover" class="cover" /></a>
+    <a target="_blank" href="${(video.endpoint) ? video.endpoint:""}"><img src="https://image.tmdb.org/t/p/w500${details.poster_path}" alt="cover" class="cover" /></a>
         
     <div class="hero">
             

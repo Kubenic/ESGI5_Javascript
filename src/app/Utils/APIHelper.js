@@ -38,11 +38,23 @@ export default class APIHelper{
         return APIHelper.call("/discover/movie", {page: page});
     }
 
+    static discoverByGenre(page,genreId){
+        return APIHelper.call("/discover/movie", {page: page, with_genres: genreId});
+    }
+
     static search(query){
         return APIHelper.call("/search/movie", {query: query});
     }
 
     static details(id) {
         return APIHelper.call(`/movie/${id}`, []);
+    }
+
+    static movieVideos(id) {
+        return APIHelper.call(`/movie/${id}/videos`, []);
+    }
+
+    static genreList(){
+        return APIHelper.call('/genre/movie/list',[]);
     }
 }

@@ -579,3 +579,30 @@ a[data-tooltip][data-placement="top"]::after {
     display: inline-block;
     vertical-align: middle;
 }
+
+.genres-list{
+    list-style: none;
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 0;
+}
+.genres-list li{
+    display: inline-block;
+    margin-left: 20px;
+}
+.genres-list li a{
+    background: #242628;
+    border-left:solid 2px #00FEDE;
+    color: #00FEDE;
+    padding: 10px 15px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.genres-list li a.active {
+    background: #00FEDE;
+    color: #242628;
+}
