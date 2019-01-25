@@ -10,11 +10,12 @@ export default class Movie {
     detailsById(id){
         APIHelper.details(id).then((value) => {
             APIHelper.movieVideos(id).then((videos) =>{
-                console.log(videos);
+                
                 videos.results.map((video) => {
+                    video.endpoint = "";
                    if(video.site === "YouTube"){
                        console.log("add endpoint");
-                       video.endpoint = "https://www.youtube.com/watch?v="+video.key;
+                       video.endpoint += "https://www.youtube.com/watch?v="+video.key;
                    }
                 });
                 console.log(videos);

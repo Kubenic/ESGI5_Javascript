@@ -25,9 +25,14 @@ export function generate(body,footer,details,video){
     }</style>
     <div class="movie-details">
   
-  <div class="container">
-    <a target="_blank" href="${(video.endpoint) ? video.endpoint:""}"><img src="https://image.tmdb.org/t/p/w500${details.poster_path}" alt="cover" class="cover" /></a>
-        
+  <div class="container">`;
+    if(typeof(video) !== "undefined"){
+        markup +=`<a target="_blank" href="${(video.endpoint) ? video.endpoint:""}"><img src="https://image.tmdb.org/t/p/w500${details.poster_path}" alt="cover" class="cover" /></a>`;
+    }else{
+        markup +=`<a href="#"><img src="https://image.tmdb.org/t/p/w500${details.poster_path}" alt="cover" class="cover" /></a>`;
+
+    }
+   markup += `     
     <div class="hero">
             
       <div class="details">
