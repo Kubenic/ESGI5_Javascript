@@ -1,28 +1,25 @@
-var markup = ``;
+import * as CardPartHTMLMarkup from './Parts/Card.js';
+import * as GenreListPartHTMLMarkup from './Parts/GenreList.js';
 
-export function generate(body,footer,cards){
+
+export function generate(body,footer,cards,genres){
+    let markup = ``;
     markup +=`${body}`;
+    markup +=`<div class="wrap">
+                    <div class="search">
+                      <input type="search" class="search-box" id="search-box" />
+                      <span class="search-button" id="search-button">
+                        <span class="search-icon"></span>
+                      </span>
+                    </div>
+                </div>`;
+
+    markup += GenreListPartHTMLMarkup.generate(genres);
     markup +=`<div id="movie-card-list">`;
-    for(let card in cards){
-        markup += `
-        <div class="movie-card" style="background-image: url(https://image.tmdb.org/t/p/w500${cards[card].backdrop_path})">
-            <div class="movie-card__overlay"></div>
-            <div class="movie-card__share">
-            <button class="movie-card__icon"><i class="material-icons">&#xe87d</i></button>
-        <button class="movie-card__icon"><i class="material-icons">&#xe253</i></button>
-        <button class="movie-card__icon"><i class="material-icons">&#xe80d</i></button>
-        </div>
-        <div class="movie-card__content">
-            <div class="movie-card__header">
-            <h1 class="movie-card__title">${cards[card].title}</h1>
-        <h4 class="movie-card__info">${cards[card].release_date}</h4>
-        </div>
-        <p class="movie-card__desc">${cards[card].overview}</p>
-        <a class="btn btn-outline movie-card__button" type="button" href="/movie/${cards[card].id}">Voir les détails</a>
-        </div>
-        </div>`;
-    }
+    markup += CardPartHTMLMarkup.generate(cards);
+
     markup += `</div>`;
+
     markup +=`${footer}`;
     return markup;
 }

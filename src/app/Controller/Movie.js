@@ -9,9 +9,18 @@ export default class Movie {
 
     detailsById(id){
         APIHelper.details(id).then((value) => {
-            console.log(value);
-
-            document.body.innerHTML = HTMLMarkup.generate('','', value);
+            APIHelper.movieVideos(id).then((videos) =>{
+                
+                videos.results.map((video) => {
+                    video.endpoint = "";
+                   if(video.site === "YouTube"){
+                       console.log("add endpoint");
+                       video.endpoint += "https://www.youtube.com/watch?v="+video.key;
+                   }
+                });
+                console.log(videos);
+                document.body.innerHTML = HTMLMarkup.generate('','', value, videos.results[videos.results.length-1]);
+            });
 
         });
     }
